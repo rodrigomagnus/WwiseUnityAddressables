@@ -253,7 +253,7 @@ namespace AK.Wwise.Unity.WwiseAddressables
 				}
 			}
 
-			LoadBankAsync(bank, bankData);
+			_ = LoadBankAsync(bank, bankData);
 		}
 
 		public async Task LoadBankAsync(WwiseAddressableSoundBank bank, AssetReferenceWwiseBankData bankData)
@@ -429,7 +429,9 @@ namespace AK.Wwise.Unity.WwiseAddressables
 					if (bank.eventNames.Contains(e.Value.eventName))
 					{
 						UnityEngine.Debug.Log($"Wwise Addressable Bank Manager: Triggering delayed event {e.Value.eventName}");
-						MethodInfo handleEvent = EventType.GetMethod(e.Value.methodName, e.Value.methodArgTypes);
+						//MethodInfo handleEvent = EventType.GetMethod(e.Value.methodName, e.Value.methodArgTypes);
+                        var eventType = e.Value.eventObject.GetType();
+                        MethodInfo handleEvent = eventType.GetMethod(e.Value.methodName, e.Value.methodArgTypes);
 						handleEvent.Invoke(e.Value.eventObject, e.Value.methodArgs);
 						eventsToRemove.Add(e.Key);
 					}
