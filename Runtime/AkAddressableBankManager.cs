@@ -386,7 +386,7 @@ namespace AK.Wwise.Unity.WwiseAddressables
 				}
 			}
 
-			UnityEngine.Debug.LogWarning($"Wwise Addressables : {eventName} will be delayed, because its soundbank has not been loaded.");
+			UnityEngine.Debug.Log($"Wwise Addressables : {eventName} will be delayed, because its soundbank has not been loaded.");
 			m_eventsToFireOnBankLoad.TryAdd(eventId, new EventContainer { eventName = eventName, eventObject = eventObject, methodName = methodName, methodArgTypes = methodArgTypes, methodArgs = methodArgs });
 			return false;
 		}
