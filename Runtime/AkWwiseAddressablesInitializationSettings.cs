@@ -18,7 +18,7 @@ namespace AK.Wwise.Unity.WwiseAddressables
 					m_Instance = ReplaceOrCreateAsset(className, name);
 #else
 					m_Instance =(AkWwiseAddressablesInitializationSettings) CreateInstance<AkWwiseAddressablesInitializationSettings>();
-					UnityEngine.Debug.LogWarning("WwiseUnity: No platform specific settings were created. Default initialization settings will be used.");
+					UnityEngine.Debug.Log("WwiseUnity: No platform specific settings were created. Default initialization settings will be used.");
 #endif
 				}
 
